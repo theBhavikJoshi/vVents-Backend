@@ -16,6 +16,11 @@ app.get('/', (req, res) => {
 	res.send('Hey! Hi There! \n I am just a Backend! I cannot do much. So, Please do not expect things from me! Expectations Hurt! 😉😉😉 ');
 });
 
+app.get('/transactions', async (req, res) => {
+	const allOrders = await Order.find();
+	res.json(allOrders);
+});
+
 app.post('/saveTransaction', async (req, res) => {
 	console.log(req.body);
 	const order = new Order(req.body);
